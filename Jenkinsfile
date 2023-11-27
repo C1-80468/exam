@@ -32,6 +32,11 @@ pipeline {
                 sh '/usr/bin/docker service create --name myservice -p 9876:80 --replicas 5 c180468/mynginx'
             }
         }
+        stage ('curl') {
+            steps {
+                sh 'curl -I http://localhost:9876'
+           }
+       }
     }
 }
 
